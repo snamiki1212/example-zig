@@ -58,3 +58,21 @@ test "defer" {
         try expect(x == 1);
     }
 }
+
+test "switch" {
+    const x: i32 = 1;
+    switch (x) {
+        1...10 => {
+            print("1..10\n", .{});
+        },
+        -1...0 => {
+            print("-1..0\n", .{});
+        },
+        11, 12 => {
+            print("11,12\n", .{});
+        },
+        else => {
+            print("else\n", .{});
+        },
+    }
+}
