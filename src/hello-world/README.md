@@ -1,0 +1,3 @@
+```shell
+zig build test
+```
