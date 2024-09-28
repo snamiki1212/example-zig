@@ -1,4 +1,6 @@
-const expect = @import("std").testing.expect;
+const std = @import("std");
+const expect = std.testing.expect;
+const print = std.debug.print;
 
 pub fn main() !void {
     { // assignemnt
@@ -38,5 +40,21 @@ test "for" {
     for (str, 0..) |c, i| {
         try expect(c != 'x');
         try expect(i < str.len);
+    }
+}
+
+test "defer" {
+    {
+        var x: i32 = 0;
+        defer x = 1;
+        try expect(x == 0); // not run defer yet
+    }
+
+    {
+        var x: i32 = 0;
+        {
+            defer x = 1;
+        } // run defer
+        try expect(x == 1);
     }
 }
